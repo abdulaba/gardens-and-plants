@@ -1,0 +1,26 @@
+<div class="banner" style="background-image:url(<%= @garden.image_url%>)">
+  <h1><%= @garden.name %> </h1>
+</div>
+  
+<div class="container">
+  <div class="row">
+      <% @garden.plants.each do |plant| %>
+        <div class="col-4 card" style="background-image:url(<%= plant.image_url%>)">
+          <h3><%= plant.name %> </h3>
+        </div>
+      <% end %>
+    </div>
+  </div>
+ <hr>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <%= simple_form_for [@garden, @plant] do |f|%>
+        <%= f.input :name %>
+        <%= f.input :image_url %>
+        <%= f.submit class: "btn btn-warning"%>
+      <% end %>
+    </div>
+  </div>
+</div>
+
